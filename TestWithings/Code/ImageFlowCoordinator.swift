@@ -15,6 +15,7 @@ protocol ImageFlowCoordinable {
   func showDetailView(for images: [UIImage])
 }
 
+/// The coordinator encapsulate the navigation by abstracting the navigation controller through "flow" methods
 class ImageFlowCoordinator: Coordinator, ImageFlowCoordinable {
   func showDetailView(for images: [UIImage]) {
     let viewModel = ImagePreviewViewModel(images: images)

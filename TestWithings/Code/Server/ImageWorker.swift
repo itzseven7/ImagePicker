@@ -12,9 +12,9 @@ protocol ImageWorkable {
   func getImages(withKeywords keywords: String) -> AnyPublisher<ImageListResponse, Error>
 }
 
+// The worker is responsible of server task such as requestings image list through the Router
 class ImageWorker: ImageWorkable {
   let session = URLSession.shared
-  let queue = DispatchQueue(label: "ImageWorkerQueue", qos: .userInitiated)
   let decoder = JSONDecoder()
   
   func getImages(withKeywords keywords: String) -> AnyPublisher<ImageListResponse, Error> {

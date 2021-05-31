@@ -11,6 +11,8 @@ import Combine
 protocol SearchListViewModelProtocol: AnyObject {
   var isLoading: CurrentValueSubject<Bool, Never> { get }
   
+  var isDetailButtonEnabled: CurrentValueSubject<Bool, Never> { get }
+  
   var previews: [SearchListImageItemViewModel] { get }
   
   func searchImages(with keywords: String) -> AnyPublisher<Void, Error>
@@ -21,7 +23,11 @@ protocol SearchListViewModelProtocol: AnyObject {
 }
 
 class SearchListViewModel: SearchListViewModelProtocol {
+  private static var separator = ","
+  
   var isLoading = CurrentValueSubject<Bool, Never>(false)
+  
+  var isDetailButtonEnabled = CurrentValueSubject<Bool, Never>(false)
   
   var previews: [SearchListImageItemViewModel] = []
   
@@ -34,7 +40,7 @@ class SearchListViewModel: SearchListViewModelProtocol {
   func searchImages(with keywords: String) -> AnyPublisher<Void, Error> {
     isLoading.send(true)
     
-    return worker.getImages(withKeywords: keywords)
+    return worker.getImages(withKeywords: prepareKeywordsForQuery(keywords))
       .flatMap { response -> AnyPublisher<[Image], Error> in
         return Just(response.hits).setFailureType(to: Error.self).eraseToAnyPublisher()
       }
@@ -52,9 +58,16 @@ class SearchListViewModel: SearchListViewModelProtocol {
   
   func selectImage(at indexPath: IndexPath) {
     previews[indexPath.row].selected.toggle()
+    
+    let canShowPreview = getSelectedImages().count >= 2 ? true : false
+    isDetailButtonEnabled.send(canShowPreview)
   }
   
   func getSelectedImages() -> [UIImage] {
     return previews.filter { $0.selected }.map { $0.displayedImage }
+  }
+  
+  func prepareKeywordsForQuery(_ query: String) -> String {
+    query.replacingOccurrences(of: SearchListViewModel.separator, with: "+")
   }
 }

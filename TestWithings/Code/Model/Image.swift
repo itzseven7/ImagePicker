@@ -7,7 +7,16 @@
 
 import Foundation
 
-class Image: Decodable, Equatable {
+protocol ImageModel {
+  var id: Int { get }
+  var pageURL: String { get }
+  var previewURL: String { get }
+  var imageWidth: Int { get }
+  var imageHeight: Int { get }
+}
+
+/// The image represents an image object on Pixabay
+class Image: Decodable, Equatable, ImageModel {
   var id: Int
   var pageURL: String
   var previewURL: String

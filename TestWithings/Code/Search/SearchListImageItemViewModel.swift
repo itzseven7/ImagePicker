@@ -19,9 +19,9 @@ class SearchListImageItemViewModel {
     }
   }
   
-  let image: Image
+  let image: ImageModel
   
-  init?(image: Image) throws {
+  init?(image: ImageModel) throws {
     self.image = image
     
     let imageData = try Data(contentsOf: URL(string: image.previewURL)!)

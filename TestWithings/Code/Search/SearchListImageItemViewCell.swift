@@ -40,6 +40,7 @@ class SearchListImageItemViewCell: UICollectionViewCell {
     setConstraints()
     
     checkedImageContainerView.isHidden = true
+    checkedImageContainerView.layer.cornerRadius = 12
   }
   
   func prepareSubviews() {
@@ -55,7 +56,8 @@ class SearchListImageItemViewCell: UICollectionViewCell {
     imageView.Bottom == contentView.Bottom
     
     checkedImageContainerView.width(24).height(24)
-    checkedImageContainerView.centerInContainer()
+    checkedImageContainerView.Leading == contentView.Leading + 9
+    checkedImageContainerView.Bottom == contentView.Bottom - 9
     checkedImageView.width(24).height(24)
     checkedImageView.centerInContainer()
   }

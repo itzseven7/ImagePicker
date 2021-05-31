@@ -16,7 +16,6 @@
 		7A7D05E0266503F90081012E /* TestWithingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05DF266503F90081012E /* TestWithingsUITests.swift */; };
 		7A7D05EE266508D60081012E /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05ED266508D60081012E /* Environment.swift */; };
 		7A7D05F0266509040081012E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05EF266509040081012E /* Router.swift */; };
-		7A7D05F226650D390081012E /* RouterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05F126650D390081012E /* RouterHelper.swift */; };
 		7A7D05F426650F640081012E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05F326650F640081012E /* Image.swift */; };
 		7A7D05F6266510B20081012E /* ImageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05F5266510B20081012E /* ImageWorker.swift */; };
 		7A7D05F8266516DE0081012E /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D05F7266516DE0081012E /* SearchListViewController.swift */; };
@@ -29,6 +28,11 @@
 		7A7D06062665305C0081012E /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D06052665305C0081012E /* ImagePreviewViewController.swift */; };
 		7A7D06082665312A0081012E /* SearchListImageItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D06072665312A0081012E /* SearchListImageItemViewModel.swift */; };
 		7A7D060A2665353A0081012E /* ImagePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D06092665353A0081012E /* ImagePreviewViewModel.swift */; };
+		7A7D0611266553500081012E /* SearchListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D0610266553500081012E /* SearchListViewModelTests.swift */; };
+		7A7D06132665537E0081012E /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D06122665537E0081012E /* Mocks.swift */; };
+		7A7D0615266555430081012E /* SearchListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D0614266555430081012E /* SearchListViewControllerTests.swift */; };
+		7A7D0617266563990081012E /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D0616266563990081012E /* UIImage+Color.swift */; };
+		7A7D06192665650C0081012E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D06182665650C0081012E /* UIColor+Extension.swift */; };
 		879E082C48DB9DFE158FE0BA /* Pods_TestWithingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39E3BB59F8733381E566CF6 /* Pods_TestWithingsTests.framework */; };
 		BAF496C24D632F3F89DFD566 /* Pods_TestWithings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C847EFF44DD118D6C8FC76D /* Pods_TestWithings.framework */; };
 /* End PBXBuildFile section */
@@ -69,7 +73,6 @@
 		7A7D05E1266503F90081012E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A7D05ED266508D60081012E /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		7A7D05EF266509040081012E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		7A7D05F126650D390081012E /* RouterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHelper.swift; sourceTree = "<group>"; };
 		7A7D05F326650F640081012E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7A7D05F5266510B20081012E /* ImageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWorker.swift; sourceTree = "<group>"; };
 		7A7D05F7266516DE0081012E /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +85,11 @@
 		7A7D06052665305C0081012E /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		7A7D06072665312A0081012E /* SearchListImageItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListImageItemViewModel.swift; sourceTree = "<group>"; };
 		7A7D06092665353A0081012E /* ImagePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewModel.swift; sourceTree = "<group>"; };
+		7A7D0610266553500081012E /* SearchListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModelTests.swift; sourceTree = "<group>"; };
+		7A7D06122665537E0081012E /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		7A7D0614266555430081012E /* SearchListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewControllerTests.swift; sourceTree = "<group>"; };
+		7A7D0616266563990081012E /* UIImage+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
+		7A7D06182665650C0081012E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		93B36A32EE236D6F9E4C2AB7 /* Pods_TestWithings_TestWithingsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestWithings_TestWithingsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF77D7D682C0680DE8AE87 /* Pods-TestWithingsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWithingsTests.release.xcconfig"; path = "Target Support Files/Pods-TestWithingsTests/Pods-TestWithingsTests.release.xcconfig"; sourceTree = "<group>"; };
 		C14275ED841B003C655B70AB /* Pods-TestWithings-TestWithingsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWithings-TestWithingsUITests.release.xcconfig"; path = "Target Support Files/Pods-TestWithings-TestWithingsUITests/Pods-TestWithings-TestWithingsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +187,9 @@
 			children = (
 				7A7D05D4266503F90081012E /* TestWithingsTests.swift */,
 				7A7D05D6266503F90081012E /* Info.plist */,
+				7A7D0610266553500081012E /* SearchListViewModelTests.swift */,
+				7A7D0614266555430081012E /* SearchListViewControllerTests.swift */,
+				7A7D06122665537E0081012E /* Mocks.swift */,
 			);
 			path = TestWithingsTests;
 			sourceTree = "<group>";
@@ -205,7 +216,6 @@
 			children = (
 				7A7D05ED266508D60081012E /* Environment.swift */,
 				7A7D05EF266509040081012E /* Router.swift */,
-				7A7D05F126650D390081012E /* RouterHelper.swift */,
 				7A7D05F5266510B20081012E /* ImageWorker.swift */,
 			);
 			path = Server;
@@ -243,6 +253,8 @@
 				7A7D060E266536B10081012E /* Preview */,
 				7A7D05FB26651D040081012E /* ViewController.swift */,
 				7A7D05FD26651D130081012E /* UIButton+Style.swift */,
+				7A7D0616266563990081012E /* UIImage+Color.swift */,
+				7A7D06182665650C0081012E /* UIColor+Extension.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -489,12 +501,13 @@
 				7A7D0600266521FC0081012E /* SearchListViewModel.swift in Sources */,
 				7A7D06062665305C0081012E /* ImagePreviewViewController.swift in Sources */,
 				7A7D05F8266516DE0081012E /* SearchListViewController.swift in Sources */,
+				7A7D06192665650C0081012E /* UIColor+Extension.swift in Sources */,
 				7A7D05F6266510B20081012E /* ImageWorker.swift in Sources */,
 				7A7D060426652E880081012E /* SearchListImageItemViewCell.swift in Sources */,
 				7A7D05FE26651D130081012E /* UIButton+Style.swift in Sources */,
 				7A7D060A2665353A0081012E /* ImagePreviewViewModel.swift in Sources */,
 				7A7D05FC26651D040081012E /* ViewController.swift in Sources */,
-				7A7D05F226650D390081012E /* RouterHelper.swift in Sources */,
+				7A7D0617266563990081012E /* UIImage+Color.swift in Sources */,
 				7A7D05FA266516F90081012E /* AppDelegate+Window.swift in Sources */,
 				7A7D0602266522150081012E /* ImageFlowCoordinator.swift in Sources */,
 				7A7D05EE266508D60081012E /* Environment.swift in Sources */,
@@ -508,7 +521,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7D0611266553500081012E /* SearchListViewModelTests.swift in Sources */,
 				7A7D05D5266503F90081012E /* TestWithingsTests.swift in Sources */,
+				7A7D0615266555430081012E /* SearchListViewControllerTests.swift in Sources */,
+				7A7D06132665537E0081012E /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

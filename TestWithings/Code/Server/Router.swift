@@ -49,7 +49,7 @@ enum Router: Routable {
     
     switch self {
     case .getImages(let keywords):
-      params["q"] = RouterHelper.prepareKeywordsForQuery(keywords)
+      params["q"] = keywords
     }
     
     return params

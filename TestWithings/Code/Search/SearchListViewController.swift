@@ -12,22 +12,24 @@ import Combine
 class SearchListViewController: ViewController {
   
   let titleLabel = UILabel()
+  let subtitleLabel = UILabel()
   let keywordsTextField = UITextField()
   let validateButton = UIButton()
   let goToDetailButton = UIButton()
   
   let activityIndicatorView: UIActivityIndicatorView = {
-    let indicator = UIActivityIndicatorView(style: .medium)
-    indicator.color = .blue
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.color = UIColor(named: "primary") ?? .blue
     indicator.hidesWhenStopped = true
     return indicator
   }()
   
   let stackView: UIStackView = {
     let stack = UIStackView()
+    stack.spacing = 6
     stack.axis = .vertical
     stack.distribution = .fill
-    stack.alignment = .center
+    stack.alignment = .fill
     return stack
   }()
   
@@ -58,19 +60,28 @@ class SearchListViewController: ViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(SearchListImageItemViewCell.self, forCellWithReuseIdentifier: SearchListImageItemViewCell.cellReuseIdentifier)
+    collectionView.backgroundColor = .white
     
-    titleLabel.text = "Keywords (separator = ,)"
+    titleLabel.text = "Keywords"
+    titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+    
+    subtitleLabel.text = "You must use , to separate keywords"
+    subtitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+    
+    stackView.setCustomSpacing(18, after: subtitleLabel)
     
     validateButton.setTitle("Search", for: .normal)
-    validateButton.setStyle(.primary)
+    validateButton.setStyle(.secondary)
+    validateButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     validateButton.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
     
     goToDetailButton.setTitle("Go to details", for: .normal)
     goToDetailButton.setStyle(.primary)
+    goToDetailButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     goToDetailButton.addTarget(self, action: #selector(goToDetailsButtonAction), for: .touchUpInside)
-    goToDetailButton.isHidden = true
+    goToDetailButton.isEnabled = false
     
-    keywordsTextField.layer.cornerRadius = 16
+    keywordsTextField.layer.cornerRadius = 8
     keywordsTextField.layer.masksToBounds = true
     keywordsTextField.layer.borderWidth = 0.5
     keywordsTextField.layer.borderColor = UIColor.black.cgColor
@@ -87,22 +98,26 @@ class SearchListViewController: ViewController {
       .store(in: &cancellables)
     
     viewModel.isLoading
+      .map { !$0 }
+      .receive(on: DispatchQueue.main)
+      .assign(to: \.isEnabled, on: validateButton)
+      .store(in: &cancellables)
+    
+    viewModel.isLoading
       .receive(on: DispatchQueue.main)
       .assign(to: \.isHidden, on: goToDetailButton)
+      .store(in: &cancellables)
+    
+    viewModel.isDetailButtonEnabled
+      .receive(on: DispatchQueue.main)
+      .assign(to: \.isEnabled, on: goToDetailButton)
       .store(in: &cancellables)
   }
   
   override func prepareSubviews() {
-    let searchStackView = UIStackView()
-    searchStackView.spacing = 9
-    searchStackView.axis = .horizontal
-    searchStackView.distribution = .fillEqually
-    searchStackView.alignment = .center
-    
-    searchStackView.addArrangedSubview(titleLabel)
-    searchStackView.addArrangedSubview(keywordsTextField)
-    
-    stackView.addArrangedSubview(searchStackView)
+    stackView.addArrangedSubview(titleLabel)
+    stackView.addArrangedSubview(keywordsTextField)
+    stackView.addArrangedSubview(subtitleLabel)
     stackView.addArrangedSubview(validateButton)
     
     view.sv(stackView, collectionView, goToDetailButton, activityIndicatorView)
@@ -114,8 +129,10 @@ class SearchListViewController: ViewController {
     stackView.Top == view.safeAreaLayoutGuide.Top + 18
     stackView.fillHorizontally(m: 24)
     
+    validateButton.height(30)
+    
     collectionView.Top == stackView.Bottom + 18
-    collectionView.fillHorizontally(m: 6)
+    collectionView.fillHorizontally(m: 18)
     collectionView.Bottom == goToDetailButton.Top - 18
     
     goToDetailButton.height(54)
@@ -138,7 +155,7 @@ class SearchListViewController: ViewController {
         switch completion {
         case .finished:
           self?.collectionView.reloadData()
-        case .failure(_):
+        case .failure:
           self?.presentPopUpForError()
         }
       } receiveValue: { _ in }
@@ -151,7 +168,13 @@ class SearchListViewController: ViewController {
   }
   
   func presentPopUpForError() {
+    activityIndicatorView.stopAnimating()
     
+    let alertController = UIAlertController(title: "An error occured", message: "Please contact the developer", preferredStyle: .alert)
+    
+    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+    
+    present(alertController, animated: true, completion: nil)
   }
 }
 
